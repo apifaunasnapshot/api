@@ -18,19 +18,19 @@ None.
 [
   {
     "username": "Thiago",
-    "attempts: "[{...}]"
+    "attempts": [{}]
   },
   {
     "username": "João",
-    "attempts: "[{...}]"
+    "attempts": [{}]
   },
   {
     "username": "Pablo",
-    "attempts: "[{...}]"
+    "attempts": [{}]
   },
   {
     "username": "Gabriel",
-    "attempts: "[{...}]"
+    "attempts": [{}]
   }
 ]
 ```
@@ -49,7 +49,7 @@ Adds a new student to the system.
 
 ```json
 {
-  message: string
+  "message": "message"
 }
 ```
 
