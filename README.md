@@ -49,7 +49,7 @@ Adds a new student to the system.
 
 ```json
 {
-  "message": "message"
+  "message": "Student created successfully"
 }
 ```
 
@@ -67,6 +67,6 @@ Removes a student from the system.
 
 ```json
 {
-  "message": "Student removed successfully."
+  "message": "Student removed successfully"
 }
 ```

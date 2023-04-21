@@ -6,7 +6,12 @@ class StudentController {
     try {
       const students = await Student.find();
 
-      response.status(200).send(students);
+      const filteredUStudents = students.map((student) => ({
+        username: student.username,
+        attempts: student.attempts,
+      }));
+
+      response.status(200).send(filteredUStudents);
     } catch (error: any) {
       response.status(500).send({ error: "Error", message: error.message });
     }
