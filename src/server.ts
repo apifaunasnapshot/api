@@ -1,5 +1,6 @@
 import express from "express";
 import dataBase from "./config/dbConnect";
+import routes from "./routes";
 
 dataBase.on("error", console.log.bind(console, "connection error"));
 dataBase.once("open", () => {
@@ -7,6 +8,7 @@ dataBase.once("open", () => {
 });
 
 const app = express();
+routes(app);
 
 const port = 8000;
 

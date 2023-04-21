@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 import IStudent from "../interfaces/IStudent";
 
 const studentSchema = new Schema<IStudent>({
-  username: { type: String, required: true },
+  username: { type: String, required: true, unique: true },
   attempts: [{ type: Schema.Types.ObjectId, ref: "Attempt" }],
 });
 

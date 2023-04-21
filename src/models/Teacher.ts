@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 import ITeacher from "../interfaces/ITeacher";
 
 const teacherSchema = new Schema<ITeacher>({
-  username: { type: String, required: true },
+  username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
 });
 
