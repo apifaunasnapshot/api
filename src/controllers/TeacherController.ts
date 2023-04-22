@@ -17,7 +17,7 @@ class TeacherController {
     }
   }
 
-  static async createUser(request: Request, response: Response) {
+  static async createTeacher(request: Request, response: Response) {
     try {
       const { username, password } = request.body;
 
@@ -33,7 +33,7 @@ class TeacherController {
     }
   }
 
-  static async deleteUser(request: Request, response: Response) {
+  static async deleteTeacher(request: Request, response: Response) {
     try {
       const { username, password } = request.body;
 

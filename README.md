@@ -70,3 +70,82 @@ Removes a student from the system.
   "message": "Student removed successfully"
 }
 ```
+
+## `Teacher`
+
+### `GET /teacher`
+
+Returns a list of all teachers registered in the system.
+
+#### Query Parameters
+
+None.
+
+#### Response
+
+```json
+[
+  {
+    "username": "Thiago"
+  },
+  {
+    "username": "João"
+  },
+  {
+    "username": "Pablo"
+  },
+  {
+    "username": "Gabriel"
+  }
+]
+```
+
+### `POST /teacher`
+
+Adds a new teacher to the system.
+
+#### Body Parameters
+
+| Name     | Type   | Description                  |
+| -------- | ------ | ---------------------------- |
+| username | string | The name of the teacher.     |
+| password | string | The password of the teacher. |
+
+#### Header Parameters
+
+| Name | Type   | Description   |
+| ---- | ------ | ------------- |
+| auth | string | Access token. |
+
+#### Response
+
+```json
+{
+  "message": "Teacher created successfully"
+}
+```
+
+### `DELETE /teacher/:username`
+
+Removes a teacher from the system.
+
+#### URL Parameters
+
+| Name     | Type   | Description                  |
+| -------- | ------ | ---------------------------- |
+| username | string | The name of the teacher.     |
+| password | string | The password of the teacher. |
+
+#### Header Parameters
+
+| Name | Type   | Description   |
+| ---- | ------ | ------------- |
+| auth | string | Access token. |
+
+#### Response
+
+```json
+{
+  "message": "Teacher removed successfully"
+}
+```
