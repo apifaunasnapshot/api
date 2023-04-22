@@ -149,3 +149,44 @@ Removes a teacher from the system.
   "message": "Teacher removed successfully"
 }
 ```
+
+## `Authentication`
+
+### `POST /auth/teacher`
+
+Authenticates teachers and returns a token in response
+
+#### Body Parameters
+
+| Name     | Type   | Description                  |
+| -------- | ------ | ---------------------------- |
+| username | string | The name of the teacher.     |
+| password | string | The password of the teacher. |
+
+#### Response
+
+```json
+{
+  "message": "Authentication successful!",
+  "token": "NiInR5cCI6IkpXVCJ9.tZSI6IkpvaG4gRwiaWF0IjoxE2MjM5MDIyfQ.pMek6yJV_adQssw5c"
+}
+```
+
+### `POST /auth/student`
+
+Authenticates students and returns a token in response
+
+#### Body Parameters
+
+| Name     | Type   | Description              |
+| -------- | ------ | ------------------------ |
+| username | string | The name of the student. |
+
+#### Response
+
+```json
+{
+  "message": "Authentication successful!",
+  "token": "NiInR5cCI6IkpXVCJ9.tZSI6IkpvaG4gRwiaWF0IjoxE2MjM5MDIyfQ.pMek6yJV_adQssw5c"
+}
+```
