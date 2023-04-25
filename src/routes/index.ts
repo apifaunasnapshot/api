@@ -4,6 +4,7 @@ import TeacherRoute from "./TeacherRoute";
 import StudentRoute from "./StudentRoute";
 import AuthRoute from "./AuthRoute";
 import AttemptRoute from "./AttemptRoute";
+import AnimalRoute from "./AnimalRoute";
 
 const routes = (app: Express) => {
   app
@@ -16,7 +17,8 @@ const routes = (app: Express) => {
     TeacherRoute,
     StudentRoute,
     AuthRoute,
-    AttemptRoute
+    AttemptRoute,
+    AnimalRoute
   );
 };
 

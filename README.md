@@ -174,7 +174,7 @@ Authenticates teachers and returns a token in response.
 
 ## `Attempt`
 
-### `GET /Attempt/:username`
+### `GET /attempt/:username`
 
 Returns the list of all attempts by a student.
 
@@ -197,7 +197,7 @@ Returns the list of all attempts by a student.
 ]
 ```
 
-### `POST /Attempt/:username`
+### `POST /attempt/:username`
 
 Adds a new attempt to student in the system.
 
@@ -222,4 +222,88 @@ Adds a new attempt to student in the system.
 {
   "message": "Create new attempt!"
 }
+```
+
+## `Animal`
+
+### `GET /animal/`
+
+Returns the list of all animals.
+
+#### Response
+
+```json
+[
+  {
+    "name": "Arara",
+    "img": "arara",
+    "selected": true
+  },
+  {
+    "name": "Capivara",
+    "img": "capivara",
+    "selected": true
+  },
+  {
+    "name": "Cobra",
+    "img": "cobra",
+    "selected": true
+  },
+  {
+    "name": "Crocodilo",
+    "img": "crocodilo",
+    "selected": true
+  },
+  {
+    "name": "Flamingo",
+    "img": "flamingo",
+    "selected": true
+  },
+  {
+    "name": "Juburu",
+    "img": "juburu",
+    "selected": false
+  },
+  {
+    "name": "Macaco",
+    "img": "macaco",
+    "selected": false
+  },
+  {
+    "name": "Onça-pintada",
+    "img": "oncapintada",
+    "selected": false
+  }
+]
+```
+
+### `GET /animal/selected`
+
+Returns the list of all selected animals.
+
+#### Response
+
+```json
+[
+  {
+    "name": "Arara",
+    "img": "arara"
+  },
+  {
+    "name": "Capivara",
+    "img": "capivara"
+  },
+  {
+    "name": "Cobra",
+    "img": "cobra"
+  },
+  {
+    "name": "Crocodilo",
+    "img": "crocodilo"
+  },
+  {
+    "name": "Flamingo",
+    "img": "flamingo"
+  }
+]
 ```
