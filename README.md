@@ -18,19 +18,23 @@ None.
 [
   {
     "username": "Thiago",
-    "attempts": [{}]
+    "attempts": [{...}],
+    "teacher": "Eliana"
   },
   {
     "username": "João",
-    "attempts": [{}]
+    "attempts": [{...}],
+    "teacher": "Eliana"
   },
   {
     "username": "Pablo",
-    "attempts": [{}]
+    "attempts": [{...}],
+    "teacher": "Eliana"
   },
   {
     "username": "Gabriel",
-    "attempts": [{}]
+    "attempts": [{...}],
+    "teacher": "Eliana"
   }
 ]
 ```
@@ -41,9 +45,10 @@ Adds a new student to the system.
 
 #### Body Parameters
 
-| Name     | Type   | Description              |
-| -------- | ------ | ------------------------ |
-| username | string | The name of the student. |
+| Name        | Type   | Description              |
+| ----------- | ------ | ------------------------ |
+| username    | string | The name of the student. |
+| teacherName | string | The name of the teacher. |
 
 #### Response
 
@@ -211,7 +216,6 @@ Adds a new attempt to student in the system.
 
 | Name         | Type   | Description                                             |
 | ------------ | ------ | ------------------------------------------------------- |
-| date         | Date   | The date of the attempt.                                |
 | phaseOne     | number | The number of animals selected in the first phase.      |
 | phaseTwo     | number | The number of animals selected in the second phase.     |
 | totalAnimals | number | The total number of animals available in phase 1 and 2. |
