@@ -12,7 +12,7 @@ class TeacherAuth {
     try {
       const token = request.headers["auth"] as string;
       if (!token) throw new Error("invalid token");
-      jwt.verify(token, process.env.SECRET!);
+      jwt.verify(token, process.env.SECRET_TEACHER!);
 
       next();
     } catch (error: any) {
@@ -32,7 +32,7 @@ class TeacherAuth {
 
       const token = jwt.sign(
         { username: teacher!.username },
-        process.env.SECRET!
+        process.env.SECRET_TEACHER!
       );
 
       response

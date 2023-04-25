@@ -154,7 +154,7 @@ Removes a teacher from the system.
 
 ### `POST /auth/teacher`
 
-Authenticates teachers and returns a token in response
+Authenticates teachers and returns a token in response.
 
 #### Body Parameters
 
@@ -172,11 +172,13 @@ Authenticates teachers and returns a token in response
 }
 ```
 
-### `POST /auth/student`
+## `Attempt`
 
-Authenticates students and returns a token in response
+### `GET /Attempt/:username`
 
-#### Body Parameters
+Returns the list of all attempts by a student.
+
+#### URL Parameters
 
 | Name     | Type   | Description              |
 | -------- | ------ | ------------------------ |
@@ -185,8 +187,39 @@ Authenticates students and returns a token in response
 #### Response
 
 ```json
+[
+  {
+    "date": "2023-04-25T19:10:49.643Z",
+    "phaseOne": 2,
+    "phaseTwo": 3,
+    "totalAnimals": 4
+  }
+]
+```
+
+### `POST /Attempt/:username`
+
+Adds a new attempt to student in the system.
+
+#### URL Parameters
+
+| Name     | Type   | Description              |
+| -------- | ------ | ------------------------ |
+| username | string | The name of the student. |
+
+#### Body Parameters
+
+| Name         | Type   | Description                                             |
+| ------------ | ------ | ------------------------------------------------------- |
+| date         | Date   | The date of the attempt.                                |
+| phaseOne     | number | The number of animals selected in the first phase.      |
+| phaseTwo     | number | The number of animals selected in the second phase.     |
+| totalAnimals | number | The total number of animals available in phase 1 and 2. |
+
+#### Response
+
+```json
 {
-  "message": "Authentication successful!",
-  "token": "NiInR5cCI6IkpXVCJ9.tZSI6IkpvaG4gRwiaWF0IjoxE2MjM5MDIyfQ.pMek6yJV_adQssw5c"
+  "message": "Create new attempt!"
 }
 ```

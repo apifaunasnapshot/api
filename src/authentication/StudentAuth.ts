@@ -11,7 +11,7 @@ class StudentAuth {
     try {
       const token = request.headers["auth"] as string;
       if (!token) throw new Error("invalid token");
-      jwt.verify(token, process.env.SECRET!);
+      jwt.verify(token, process.env.SECRET_STUDENT!);
 
       next();
     } catch (error: any) {
@@ -27,7 +27,7 @@ class StudentAuth {
 
       const token = jwt.sign(
         { username: student!.username },
-        process.env.SECRET!
+        process.env.SECRET_STUDENT!
       );
 
       response
