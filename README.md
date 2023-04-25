@@ -90,18 +90,9 @@ None.
 
 ```json
 [
-  {
-    "username": "Thiago"
-  },
-  {
-    "username": "João"
-  },
-  {
-    "username": "Pablo"
-  },
-  {
-    "username": "Gabriel"
-  }
+  "name": "Eliana Claudia Mayumi Ishikawa",
+  "username": "eishikawa",
+  "classRoom": [{...}]
 ]
 ```
 
@@ -113,6 +104,7 @@ Adds a new teacher to the system.
 
 | Name     | Type   | Description                  |
 | -------- | ------ | ---------------------------- |
+| name     | string | The username of the teacher. |
 | username | string | The name of the teacher.     |
 | password | string | The password of the teacher. |
 
