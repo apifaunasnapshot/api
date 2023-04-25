@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Student from "../models/Student";
 import Attempt from "../models/Attempt";
-import IAttempt from "../interfaces/IAttempt";
+import Teacher from "../models/Teacher";
 
 class AttemptController {
   static async addAttempt(request: Request, response: Response) {
@@ -33,7 +33,7 @@ class AttemptController {
         username,
       }).populate("attempts");
 
-      if (student == null) response.status(200).send([]);
+      if (student == null) return response.status(200).send([]);
 
       const filteredAttempts = student?.attempts.map((attempt) => {
         return {
@@ -45,6 +45,39 @@ class AttemptController {
       });
 
       response.status(200).send(filteredAttempts);
+    } catch (error: any) {
+      response.status(500).send({ error: "Error", message: error.message });
+    }
+  }
+
+  static async getAllAttemptsByTeacherStudents(
+    request: Request,
+    response: Response
+  ) {
+    try {
+      const { username } = request.params;
+
+      const teacher = await Teacher.findOne({ username })
+        .populate("classRoom")
+        .populate({
+          path: "classRoom",
+          populate: { path: "attempts", model: "Attempt" },
+        });
+      if (teacher == null) return response.status(200).send([]);
+
+      const classRoom = teacher.classRoom.map((student) => ({
+        username: student.username,
+        attempts: student.attempts.map(
+          ({ date, phaseOne, phaseTwo, totalAnimals }) => ({
+            date,
+            phaseOne,
+            phaseTwo,
+            totalAnimals,
+          })
+        ),
+      }));
+
+      response.status(200).send(classRoom);
     } catch (error: any) {
       response.status(500).send({ error: "Error", message: error.message });
     }

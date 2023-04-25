@@ -18,19 +18,23 @@ None.
 [
   {
     "username": "Thiago",
-    "attempts": [{}]
+    "attempts": [{...}],
+    "teacher": "Eliana"
   },
   {
     "username": "João",
-    "attempts": [{}]
+    "attempts": [{...}],
+    "teacher": "Eliana"
   },
   {
     "username": "Pablo",
-    "attempts": [{}]
+    "attempts": [{...}],
+    "teacher": "Eliana"
   },
   {
     "username": "Gabriel",
-    "attempts": [{}]
+    "attempts": [{...}],
+    "teacher": "Eliana"
   }
 ]
 ```
@@ -41,9 +45,10 @@ Adds a new student to the system.
 
 #### Body Parameters
 
-| Name     | Type   | Description              |
-| -------- | ------ | ------------------------ |
-| username | string | The name of the student. |
+| Name        | Type   | Description              |
+| ----------- | ------ | ------------------------ |
+| username    | string | The name of the student. |
+| teacherName | string | The name of the teacher. |
 
 #### Response
 
@@ -85,18 +90,9 @@ None.
 
 ```json
 [
-  {
-    "username": "Thiago"
-  },
-  {
-    "username": "João"
-  },
-  {
-    "username": "Pablo"
-  },
-  {
-    "username": "Gabriel"
-  }
+  "name": "Eliana Claudia Mayumi Ishikawa",
+  "username": "eishikawa",
+  "classRoom": [{...}]
 ]
 ```
 
@@ -108,6 +104,7 @@ Adds a new teacher to the system.
 
 | Name     | Type   | Description                  |
 | -------- | ------ | ---------------------------- |
+| name     | string | The username of the teacher. |
 | username | string | The name of the teacher.     |
 | password | string | The password of the teacher. |
 
@@ -197,6 +194,34 @@ Returns the list of all attempts by a student.
 ]
 ```
 
+### `GET /attempt/teacher/:username`
+
+Returns the list of all attempts for a classroom.
+
+#### URL Parameters
+
+| Name     | Type   | Description                  |
+| -------- | ------ | ---------------------------- |
+| username | string | The username of the teacher. |
+
+#### Response
+
+```json
+[
+  {
+    "username": "Gabriel",
+    "attempts": [
+      {
+        "date": "2023-04-25T21:54:02.349Z",
+        "phaseOne": 2,
+        "phaseTwo": 3,
+        "totalAnimals": 3
+      }
+    ]
+  }
+]
+```
+
 ### `POST /attempt/:username`
 
 Adds a new attempt to student in the system.
@@ -211,7 +236,6 @@ Adds a new attempt to student in the system.
 
 | Name         | Type   | Description                                             |
 | ------------ | ------ | ------------------------------------------------------- |
-| date         | Date   | The date of the attempt.                                |
 | phaseOne     | number | The number of animals selected in the first phase.      |
 | phaseTwo     | number | The number of animals selected in the second phase.     |
 | totalAnimals | number | The total number of animals available in phase 1 and 2. |
