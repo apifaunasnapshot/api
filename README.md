@@ -194,6 +194,34 @@ Returns the list of all attempts by a student.
 ]
 ```
 
+### `GET /attempt/teacher/:username`
+
+Returns the list of all attempts for a classroom.
+
+#### URL Parameters
+
+| Name     | Type   | Description                  |
+| -------- | ------ | ---------------------------- |
+| username | string | The username of the teacher. |
+
+#### Response
+
+```json
+[
+  {
+    "username": "Gabriel",
+    "attempts": [
+      {
+        "date": "2023-04-25T21:54:02.349Z",
+        "phaseOne": 2,
+        "phaseTwo": 3,
+        "totalAnimals": 3
+      }
+    ]
+  }
+]
+```
+
 ### `POST /attempt/:username`
 
 Adds a new attempt to student in the system.
