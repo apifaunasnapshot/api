@@ -9,9 +9,9 @@ class StudentAuth {
     next: NextFunction
   ) {
     try {
-      const token = request.headers["auth"] as string;
+      const token = request.headers["authstudent"] as string;
       if (!token) throw new Error("invalid token");
-      jwt.verify(token, process.env.SECRET_STUDENT!);
+      jwt.verify(token, process.env.SECRET!);
 
       next();
     } catch (error: any) {
@@ -27,7 +27,7 @@ class StudentAuth {
 
       const token = jwt.sign(
         { username: student!.username },
-        process.env.SECRET_STUDENT!
+        process.env.SECRET!
       );
 
       response
