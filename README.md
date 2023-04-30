@@ -68,6 +68,12 @@ Removes a student from the system.
 | -------- | ------ | ---------------------------------- |
 | username | string | The name of the student to remove. |
 
+#### Header Parameters
+
+| Name        | Type   | Description           |
+| ----------- | ------ | --------------------- |
+| authteacher | string | Access teacher token. |
+
 #### Response
 
 ```json
@@ -104,15 +110,15 @@ Adds a new teacher to the system.
 
 | Name     | Type   | Description                  |
 | -------- | ------ | ---------------------------- |
-| name     | string | The username of the teacher. |
-| username | string | The name of the teacher.     |
+| name     | string | The name of the teacher.     |
+| username | string | The username of the teacher. |
 | password | string | The password of the teacher. |
 
 #### Header Parameters
 
-| Name | Type   | Description   |
-| ---- | ------ | ------------- |
-| auth | string | Access token. |
+| Name        | Type   | Description           |
+| ----------- | ------ | --------------------- |
+| authteacher | string | Access teacher token. |
 
 #### Response
 
@@ -135,9 +141,9 @@ Removes a teacher from the system.
 
 #### Header Parameters
 
-| Name | Type   | Description   |
-| ---- | ------ | ------------- |
-| auth | string | Access token. |
+| Name        | Type   | Description           |
+| ----------- | ------ | --------------------- |
+| authteacher | string | Access teacher token. |
 
 #### Response
 
@@ -232,13 +238,19 @@ Adds a new attempt to student in the system.
 | -------- | ------ | ------------------------ |
 | username | string | The name of the student. |
 
+#### Header Parameters
+
+| Name        | Type   | Description           |
+| ----------- | ------ | --------------------- |
+| authstudent | string | Access student token. |
+
 #### Body Parameters
 
-| Name         | Type   | Description                                             |
-| ------------ | ------ | ------------------------------------------------------- |
-| phaseOne     | number | The number of animals selected in the first phase.      |
-| phaseTwo     | number | The number of animals selected in the second phase.     |
-| totalAnimals | number | The total number of animals available in phase 1 and 2. |
+| Name         | Type   | Description                                         |
+| ------------ | ------ | --------------------------------------------------- |
+| phaseOne     | number | The number of animals selected in the first phase.  |
+| phaseTwo     | number | The number of animals selected in the second phase. |
+| totalAnimals | number | The total number of animals available in each phase |
 
 #### Response
 

@@ -4,15 +4,12 @@ import bcrypt from "bcrypt";
 import Teacher from "../models/Teacher";
 
 class TeacherAuth {
-  static async checkToken(
-    request: Request,
-    response: Response,
-    next: NextFunction
-  ) {
+  static checkToken(request: Request, response: Response, next: NextFunction) {
     try {
-      const token = request.headers["auth"] as string;
-      if (!token) throw new Error("invalid token");
-      jwt.verify(token, process.env.SECRET_TEACHER!);
+      TeacherAuth.checkTeacherToken(
+        request.headers["authteacher"] as string,
+        process.env.SECRET_TEACHER!
+      );
 
       next();
     } catch (error: any) {
@@ -23,24 +20,32 @@ class TeacherAuth {
   static async login(request: Request, response: Response) {
     try {
       const { username, password } = request.body;
-      if (!username) throw new Error("username invalid");
-      const teacher = await Teacher.findOne({ username });
-      if (!teacher) throw new Error("Teacher not found");
+      const message = await TeacherAuth.checkTeacher(username, password);
 
-      const checkPassword = await bcrypt.compare(password, teacher!.password);
-      if (!checkPassword) throw new Error("invalid data");
+      const token = jwt.sign(username, process.env.SECRET_TEACHER!);
 
-      const token = jwt.sign(
-        { username: teacher!.username },
-        process.env.SECRET_TEACHER!
-      );
-
-      response
-        .status(200)
-        .send({ message: "Authentication successful!", token });
+      response.status(200).send({ message, token });
     } catch (error: any) {
       response.status(500).send({ error: "Error", message: error.message });
     }
+  }
+
+  private static checkTeacherToken(token: string, hash: string): void | never {
+    if (!token) throw new Error("invalid token");
+    jwt.verify(token, hash);
+  }
+
+  private static async checkTeacher(
+    username: string,
+    password: string
+  ): Promise<string | never> {
+    if (!username) throw new Error("username invalid");
+    const teacher = await Teacher.findOne({ username });
+    if (!teacher) throw new Error("Teacher not found");
+
+    const checkPassword = await bcrypt.compare(password, teacher.password);
+    if (!checkPassword) throw new Error("invalid data");
+    return "Authentication successful!";
   }
 }
 
