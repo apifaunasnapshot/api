@@ -8,9 +8,12 @@ class AttemptController {
     try {
       const { username } = request.params;
       const { phaseOne, phaseTwo, totalAnimals } = request.body;
-      const date = new Date();
-      const aux = { phaseOne, phaseTwo, totalAnimals, date };
-      const newAttempt = new Attempt(aux);
+      const newAttempt = new Attempt({
+        phaseOne,
+        phaseTwo,
+        totalAnimals,
+        date: new Date(),
+      });
 
       await newAttempt.save();
 

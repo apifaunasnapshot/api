@@ -1,16 +1,19 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import Teacher from "../models/Teacher";
+import StandardAnimal from "../models/StandardAnimal";
+import Animal from "../models/Animal";
 
 class TeacherController {
   static async getTeachers(request: Request, response: Response) {
     try {
-      const teachers = await Teacher.find().populate("classRoom");
+      const teachers = await Teacher.find().populate("animals");
 
       const filteredTeachers = teachers.map((teacher) => ({
         name: teacher.name,
         username: teacher.username,
         classRoom: teacher.classRoom.map(({ username }) => username),
+        animals: teacher.animals.map(({ name }) => name),
       }));
 
       response.status(200).send(filteredTeachers);
@@ -36,9 +39,22 @@ class TeacherController {
         username,
         password: passwordHash,
         classRoom: [],
+        animals: [],
       });
-
       await newTeacher.save();
+
+      const animals = (await StandardAnimal.find()).map(
+        ({ name, img }) =>
+          new Animal({
+            name,
+            img,
+            selected: false,
+            teacher: newTeacher,
+          })
+      );
+      animals.forEach(async (animal) => await animal.save());
+      await newTeacher.updateOne({ $push: { animals: animals } });
+
       response.status(200).send({ message: "registered teacher" });
     } catch (error: any) {
       response.status(500).send({ error: "Error", message: error.message });

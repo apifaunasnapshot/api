@@ -5,7 +5,7 @@ import TeacherAuth from "../authentication/TeacherAuth";
 const TeacherRoute = Router();
 
 TeacherRoute.get("/teacher", TeacherController.getTeachers)
-  .post("/teacher", TeacherAuth.checkToken, TeacherController.createTeacher)
+  .post("/teacher", TeacherController.createTeacher)
   .delete(
     "/teacher/:username",
     TeacherAuth.checkToken,
