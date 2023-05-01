@@ -264,64 +264,12 @@ Adds a new attempt to student in the system.
 
 ### `GET /animal/`
 
-Returns the list of all animals.
+Returns the list of all animals registred in system.
 
 #### Response
 
 ```json
-[
-  {
-    "name": "Arara",
-    "img": "arara",
-    "selected": true
-  },
-  {
-    "name": "Capivara",
-    "img": "capivara",
-    "selected": true
-  },
-  {
-    "name": "Cobra",
-    "img": "cobra",
-    "selected": true
-  },
-  {
-    "name": "Crocodilo",
-    "img": "crocodilo",
-    "selected": true
-  },
-  {
-    "name": "Flamingo",
-    "img": "flamingo",
-    "selected": true
-  },
-  {
-    "name": "Juburu",
-    "img": "juburu",
-    "selected": false
-  },
-  {
-    "name": "Macaco",
-    "img": "macaco",
-    "selected": false
-  },
-  {
-    "name": "Onça-pintada",
-    "img": "oncapintada",
-    "selected": false
-  }
-]
-```
-
-### `GET /animal/selected`
-
-Returns the list of all selected animals.
-
-#### Response
-
-```json
-[
-  {
+{
     "name": "Arara",
     "img": "arara"
   },
@@ -340,6 +288,115 @@ Returns the list of all selected animals.
   {
     "name": "Flamingo",
     "img": "flamingo"
+  },
+  {
+    "name": "Juburu",
+    "img": "juburu"
+  },
+  {
+    "name": "Macaco",
+    "img": "macaco"
+  },
+  {
+    "name": "Onça-pintada",
+    "img": "oncapintada"
   }
 ]
 ```
+
+### `GET /animal/:username`
+
+Returns the list of all animals of teacher.
+
+#### URL Parameters
+
+| Name     | Type   | Description                  |
+| -------- | ------ | ---------------------------- |
+| username | string | The username of the teacher. |
+
+#### Response
+
+```json
+[
+  {
+    "name": "Arara",
+    "img": "arara",
+    "selected": true
+  },
+  {
+    "name": "Cobra",
+    "img": "cobra",
+    "selected": true
+  },
+  {
+    "name": "Crocodilo",
+    "img": "crocodilo",
+    "selected": true
+  },
+  {
+    "name": "Flamingo",
+    "img": "flamingo",
+    "selected": true
+  },
+  {
+    "name": "Macaco",
+    "img": "macaco",
+    "selected": false
+  },
+  {
+    "name": "Onça-pintada",
+    "img": "oncapintada",
+    "selected": false
+  }
+]
+```
+
+### `GET /animal/selected/:username`
+
+Returns the list of all selected animals by the teacher.
+
+#### URL Parameters
+
+| Name     | Type   | Description                  |
+| -------- | ------ | ---------------------------- |
+| username | string | The username of the teacher. |
+
+#### Response
+
+```json
+[
+  {
+    "name": "Arara",
+    "img": "arara"
+  },
+  {
+    "name": "Cobra",
+    "img": "cobra"
+  },
+  {
+    "name": "Crocodilo",
+    "img": "crocodilo"
+  },
+  {
+    "name": "Flamingo",
+    "img": "flamingo"
+  }
+]
+```
+
+### `PUT /animal/:username`
+
+Update the status of an animal in the teacher's list.
+
+#### URL Parameters
+
+| Name     | Type   | Description                  |
+| -------- | ------ | ---------------------------- |
+| username | string | The username of the teacher. |
+
+#### Body Parameters
+
+| Name  | Type    | Description                                 |
+| ----- | ------- | ------------------------------------------- |
+| name  | string  | The animal name.                            |
+| state | boolean | The future state of the animal in the list. |
