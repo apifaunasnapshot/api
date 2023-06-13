@@ -43,7 +43,6 @@ class AttemptController {
           date: attempt.date,
           phaseOne: attempt.phaseOne,
           phaseTwo: attempt.phaseTwo,
-          totalAnimals: attempt.totalAnimals,
         };
       });
 
@@ -70,14 +69,11 @@ class AttemptController {
 
       const classRoom = teacher.classRoom.map((student) => ({
         username: student.username,
-        attempts: student.attempts.map(
-          ({ date, phaseOne, phaseTwo, totalAnimals }) => ({
-            date,
-            phaseOne,
-            phaseTwo,
-            totalAnimals,
-          })
-        ),
+        attempts: student.attempts.map(({ date, phaseOne, phaseTwo }) => ({
+          date,
+          phaseOne,
+          phaseTwo,
+        })),
       }));
 
       response.status(200).send(classRoom);

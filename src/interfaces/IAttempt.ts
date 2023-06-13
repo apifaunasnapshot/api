@@ -1,6 +1,10 @@
+interface IAnimalAttempt {
+  animal: string;
+  isCorrect: boolean;
+}
+
 export default interface IAttempt {
   date: Date;
-  phaseOne: number;
-  phaseTwo: number;
-  totalAnimals: number;
+  phaseOne: IAnimalAttempt[];
+  phaseTwo: IAnimalAttempt[];
 }

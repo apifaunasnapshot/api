@@ -214,10 +214,31 @@ Returns the list of all attempts by a student.
 ```json
 [
   {
-    "date": "2023-04-25T19:10:49.643Z",
-    "phaseOne": 2,
-    "phaseTwo": 3,
-    "totalAnimals": 4
+    "date": "2023-06-13T00:00:00.000Z",
+    "phaseOne": [
+      {
+        "animal": "Crocodilo",
+        "isCorrect": true
+      },
+      {
+        "animal": "Arara",
+        "isCorrect": false
+      },
+      {
+        "animal": "Cobra",
+        "isCorrect": true
+      }
+    ],
+    "phaseTwo": [
+      {
+        "animal": "Crocodilo",
+        "isCorrect": true
+      },
+      {
+        "animal": "Arara",
+        "isCorrect": true
+      }
+    ]
   }
 ]
 ```
@@ -240,10 +261,31 @@ Returns the list of all attempts for a classroom.
     "username": "Gabriel",
     "attempts": [
       {
-        "date": "2023-04-25T21:54:02.349Z",
-        "phaseOne": 2,
-        "phaseTwo": 3,
-        "totalAnimals": 3
+        "date": "2023-06-13T00:00:00.000Z",
+        "phaseOne": [
+          {
+            "animal": "Crocodilo",
+            "isCorrect": true
+          },
+          {
+            "animal": "Arara",
+            "isCorrect": false
+          },
+          {
+            "animal": "Cobra",
+            "isCorrect": true
+          }
+        ],
+        "phaseTwo": [
+          {
+            "animal": "Crocodilo",
+            "isCorrect": true
+          },
+          {
+            "animal": "Arara",
+            "isCorrect": true
+          }
+        ]
       }
     ]
   }
@@ -268,11 +310,19 @@ Adds a new attempt to student in the system.
 
 #### Body Parameters
 
-| Name         | Type   | Description                                         |
-| ------------ | ------ | --------------------------------------------------- |
-| phaseOne     | number | The number of animals selected in the first phase.  |
-| phaseTwo     | number | The number of animals selected in the second phase. |
-| totalAnimals | number | The total number of animals available in each phase |
+| Name     | Type  | Description                                                              |
+| -------- | ----- | ------------------------------------------------------------------------ |
+| phaseOne | array | Array of objects with animal names and correctness of student's answers. |
+| phaseTwo | array | Array of objects with animal names and correctness of student's answers. |
+
+#### Object Model
+
+```json
+{
+  "animal": "Crocodilo",
+  "isCorrect": true
+}
+```
 
 #### Response
 
