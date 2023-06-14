@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import Teacher from "../models/Teacher";
 import StandardAnimal from "../models/StandardAnimal";
 import Animal from "../models/Animal";
+import jwt from "jsonwebtoken";
 
 class TeacherController {
   static async getTeachers(request: Request, response: Response) {
@@ -55,7 +56,9 @@ class TeacherController {
       animals.forEach(async (animal) => await animal.save());
       await newTeacher.updateOne({ $push: { animals: animals } });
 
-      response.status(200).send({ message: "registered teacher" });
+      const token = jwt.sign(username, process.env.SECRET_TEACHER!);
+
+      response.status(200).send({ message: "registered teacher", token });
     } catch (error: any) {
       response.status(500).send({ error: "Error", message: error.message });
     }
