@@ -27,15 +27,17 @@ class StudentController {
 
   static async createStudent(request: Request, response: Response) {
     try {
-      const { username, teacherName } = request.body;
+      const { username, teacherUser } = request.body;
 
-      const teacher = await Teacher.findOne({ name: teacherName });
+      const teacher = await Teacher.findOne({ username: teacherUser });
+      if (!teacher) throw new Error("teacher not found");
+
       const newStudentData = { username, teacher };
 
       const newStudent = new Student(newStudentData);
       await newStudent.save();
 
-      await teacher?.updateOne({ $push: { classRoom: newStudent } });
+      await teacher.updateOne({ $push: { classRoom: newStudent } });
 
       response.status(200).send({ message: "student created" });
     } catch (error: any) {

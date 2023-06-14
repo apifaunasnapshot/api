@@ -66,10 +66,10 @@ Adds a new student to the system.
 
 #### Body Parameters
 
-| Name        | Type   | Description              |
-| ----------- | ------ | ------------------------ |
-| username    | string | The name of the student. |
-| teacherName | string | The name of the teacher. |
+| Name        | Type   | Description                  |
+| ----------- | ------ | ---------------------------- |
+| username    | string | The name of the student.     |
+| teacherUser | string | The username of the teacher. |
 
 #### Response
 
@@ -136,12 +136,6 @@ Adds a new teacher to the system.
 | username | string | The username of the teacher. |
 | password | string | The password of the teacher. |
 
-#### Header Parameters
-
-| Name        | Type   | Description           |
-| ----------- | ------ | --------------------- |
-| authteacher | string | Access teacher token. |
-
 #### Response
 
 ```json
@@ -187,6 +181,26 @@ Authenticates teachers and returns a token in response.
 | -------- | ------ | ---------------------------- |
 | username | string | The name of the teacher.     |
 | password | string | The password of the teacher. |
+
+#### Response
+
+```json
+{
+  "message": "Authentication successful!",
+  "token": "NiInR5cCI6IkpXVCJ9.tZSI6IkpvaG4gRwiaWF0IjoxE2MjM5MDIyfQ.pMek6yJV_adQssw5c"
+}
+```
+
+### `POST /auth/student`
+
+Authenticates students and returns a token in response.
+
+#### Body Parameters
+
+| Name        | Type   | Description                  |
+| ----------- | ------ | ---------------------------- |
+| username    | string | The name of the teacher.     |
+| teacherUser | string | The username of the teacher. |
 
 #### Response
 

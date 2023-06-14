@@ -8,7 +8,9 @@ import jwt from "jsonwebtoken";
 class TeacherController {
   static async getTeachers(request: Request, response: Response) {
     try {
-      const teachers = await Teacher.find().populate("animals");
+      const teachers = await Teacher.find()
+        .populate("animals")
+        .populate("classRoom");
 
       const filteredTeachers = teachers.map((teacher) => ({
         name: teacher.name,
