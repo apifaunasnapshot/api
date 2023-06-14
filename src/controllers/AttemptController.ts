@@ -7,11 +7,10 @@ class AttemptController {
   static async addAttempt(request: Request, response: Response) {
     try {
       const { username } = request.params;
-      const { phaseOne, phaseTwo, totalAnimals } = request.body;
+      const { phaseOne, phaseTwo } = request.body;
       const newAttempt = new Attempt({
         phaseOne,
         phaseTwo,
-        totalAnimals,
         date: new Date(),
       });
 
