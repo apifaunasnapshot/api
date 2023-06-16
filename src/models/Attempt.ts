@@ -3,13 +3,8 @@ import IAttempt from "../interfaces/IAttempt";
 
 const attemptSchema = new Schema<IAttempt>({
   date: { type: Date, required: true },
-  phaseOne: [
-    {
-      animal: { type: String, required: true },
-      isCorrect: { type: Boolean, required: true },
-    },
-  ],
-  phaseTwo: [
+  phase: { type: String, required: true },
+  tries: [
     {
       animal: { type: String, required: true },
       isCorrect: { type: Boolean, required: true },

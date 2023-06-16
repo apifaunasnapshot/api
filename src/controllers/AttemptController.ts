@@ -7,10 +7,10 @@ class AttemptController {
   static async addAttempt(request: Request, response: Response) {
     try {
       const { username } = request.params;
-      const { phaseOne, phaseTwo } = request.body;
+      const { phase, tries } = request.body;
       const newAttempt = new Attempt({
-        phaseOne,
-        phaseTwo,
+        phase,
+        tries,
         date: new Date(),
       });
 
@@ -40,8 +40,8 @@ class AttemptController {
       const filteredAttempts = student?.attempts.map((attempt) => {
         return {
           date: attempt.date,
-          phaseOne: attempt.phaseOne,
-          phaseTwo: attempt.phaseTwo,
+          phase: attempt.phase,
+          tries: attempt.tries,
         };
       });
 
@@ -68,10 +68,10 @@ class AttemptController {
 
       const classRoom = teacher.classRoom.map((student) => ({
         username: student.username,
-        attempts: student.attempts.map(({ date, phaseOne, phaseTwo }) => ({
+        attempts: student.attempts.map(({ date, phase, tries }) => ({
           date,
-          phaseOne,
-          phaseTwo,
+          phase,
+          tries,
         })),
       }));
 

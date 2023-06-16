@@ -229,7 +229,8 @@ Returns the list of all attempts by a student.
 [
   {
     "date": "2023-06-13T00:00:00.000Z",
-    "phaseOne": [
+    "phase": "One",
+    "tries": [
       {
         "animal": "Crocodilo",
         "isCorrect": true
@@ -242,8 +243,12 @@ Returns the list of all attempts by a student.
         "animal": "Cobra",
         "isCorrect": true
       }
-    ],
-    "phaseTwo": [
+    ]
+  },
+  {
+    "date": "2023-06-13T00:00:00.000Z",
+    "phase": "Two",
+    "tries": [
       {
         "animal": "Crocodilo",
         "isCorrect": true
@@ -276,7 +281,8 @@ Returns the list of all attempts for a classroom.
     "attempts": [
       {
         "date": "2023-06-13T00:00:00.000Z",
-        "phaseOne": [
+        "phase": "One",
+        "tries": [
           {
             "animal": "Crocodilo",
             "isCorrect": true
@@ -289,8 +295,12 @@ Returns the list of all attempts for a classroom.
             "animal": "Cobra",
             "isCorrect": true
           }
-        ],
-        "phaseTwo": [
+        ]
+      },
+      {
+        "date": "2023-06-13T00:00:00.000Z",
+        "phase": "Two",
+        "tries": [
           {
             "animal": "Crocodilo",
             "isCorrect": true
@@ -324,10 +334,10 @@ Adds a new attempt to student in the system.
 
 #### Body Parameters
 
-| Name     | Type  | Description                                                              |
-| -------- | ----- | ------------------------------------------------------------------------ |
-| phaseOne | array | Array of objects with animal names and correctness of student's answers. |
-| phaseTwo | array | Array of objects with animal names and correctness of student's answers. |
+| Name  | Type   | Description                                                              |
+| ----- | ------ | ------------------------------------------------------------------------ |
+| phase | string | Phase name.                                                              |
+| tries | array  | Array of objects with animal names and correctness of student's answers. |
 
 #### Object Model
 
@@ -335,6 +345,24 @@ Adds a new attempt to student in the system.
 {
   "animal": "Crocodilo",
   "isCorrect": true
+}
+```
+
+#### Request
+
+```json
+{
+  "phase": "One",
+  "tries": [
+    {
+      "animal": "Crocodilo",
+      "isCorrect": true
+    },
+    {
+      "animal": "Arara",
+      "isCorrect": false
+    }
+  ]
 }
 ```
 

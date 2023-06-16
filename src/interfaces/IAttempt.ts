@@ -5,6 +5,6 @@ interface IAnimalAttempt {
 
 export default interface IAttempt {
   date: Date;
-  phaseOne: IAnimalAttempt[];
-  phaseTwo: IAnimalAttempt[];
+  phase: string;
+  tries: IAnimalAttempt[];
 }
