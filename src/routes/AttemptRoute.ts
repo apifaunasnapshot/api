@@ -10,7 +10,7 @@ AttemptRoute.get(
   AttemptController.getAllAttemptsByTeacherStudents
 );
 AttemptRoute.post(
-  "/attempt/:username",
+  "/attempt/:teacherUser/:username",
   StudentAuth.checkToken,
   AttemptController.addAttempt
 );

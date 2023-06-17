@@ -322,9 +322,10 @@ Adds a new attempt to student in the system.
 
 #### URL Parameters
 
-| Name     | Type   | Description              |
-| -------- | ------ | ------------------------ |
-| username | string | The name of the student. |
+| Name        | Type   | Description                  |
+| ----------- | ------ | ---------------------------- |
+| username    | string | The name of the student.     |
+| teacherUser | string | The username of the teacher. |
 
 #### Header Parameters
 

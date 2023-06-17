@@ -11,10 +11,9 @@ class StudentController {
 
       const filteredUStudents = students.map((student) => ({
         username: student.username,
-        attempts: student.attempts.map(({ date, phaseOne, phaseTwo }) => ({
+        attempts: student.attempts.map(({ date, tries }) => ({
           date,
-          phaseOne,
-          phaseTwo,
+          tries: tries.map(({ isCorrect, animal }) => ({ animal, isCorrect })),
         })),
         teacher: student.teacher.username,
       }));

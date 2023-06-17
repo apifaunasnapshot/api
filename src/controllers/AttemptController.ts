@@ -6,7 +6,7 @@ import Teacher from "../models/Teacher";
 class AttemptController {
   static async addAttempt(request: Request, response: Response) {
     try {
-      const { username } = request.params;
+      const { username, teacherUser } = request.params;
       const { phase, tries } = request.body;
       const newAttempt = new Attempt({
         phase,
@@ -16,8 +16,10 @@ class AttemptController {
 
       await newAttempt.save();
 
+      const teacher = await Teacher.findOne({ username: teacherUser });
+
       await Student.findOneAndUpdate(
-        { username },
+        { username, teacher },
         { $push: { attempts: newAttempt } }
       );
 
@@ -41,7 +43,10 @@ class AttemptController {
         return {
           date: attempt.date,
           phase: attempt.phase,
-          tries: attempt.tries,
+          tries: attempt.tries.map(({ isCorrect, animal }) => ({
+            animal,
+            isCorrect,
+          })),
         };
       });
 
@@ -71,7 +76,7 @@ class AttemptController {
         attempts: student.attempts.map(({ date, phase, tries }) => ({
           date,
           phase,
-          tries,
+          tries: tries.map(({ isCorrect, animal }) => ({ animal, isCorrect })),
         })),
       }));
 
