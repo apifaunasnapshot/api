@@ -51,7 +51,7 @@ class TeacherController {
           new Animal({
             name,
             img,
-            selected: false,
+            selected: true,
             teacher: newTeacher,
           })
       );

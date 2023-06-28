@@ -46,7 +46,14 @@ class AnimalController {
       const { username } = request.params;
       const { name, state } = request.body;
 
-      const teacher = await Teacher.findOne({ username });
+      const teacher = await Teacher.findOne({ username }).populate("animals");
+
+      if (
+        teacher?.animals.filter((object) => object.selected).length === 4 &&
+        state === false
+      )
+        throw new Error("It's necessary to have at least 4 animals selected");
+
       const a = await Animal.findOneAndUpdate(
         { teacher, name },
         { $set: { selected: state as boolean } }
